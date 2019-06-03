@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.brustoloni.weather.data.entity.weather.response.FormattedWeatherResponse"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/card_margin">
+
+        <TextView
+            android:id="@+id/tv_week_of_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:text="@{item.weekOfDay}"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintHorizontal_weight=".3"
+            app:layout_constraintEnd_toStartOf="@+id/img_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_icon"
+            app:layout_constraintBottom_toBottomOf="@id/img_icon"
+            tools:text="Sunday"
+        />
+
+        <ImageView
+            android:id="@+id/img_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@{safeUnbox(item.icon), default =@drawable/empty}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_max"
+            app:layout_constraintStart_toEndOf="@+id/tv_week_of_day"
+            app:layout_constraintTop_toTopOf="parent"
+            android:importantForAccessibility="no"/>
+
+        <TextView
+            android:id="@+id/tv_max"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:text="@{item.temperatureMax}"
+            android:textAlignment="textEnd"
+            app:layout_constraintHorizontal_weight="0.2"
+            app:layout_constraintEnd_toStartOf="@id/tv_min"
+            app:layout_constraintStart_toEndOf="@+id/img_icon"
+            app:layout_constraintTop_toTopOf="@id/img_icon"
+            app:layout_constraintBottom_toBottomOf="@id/img_icon"
+            tools:text="23º"
+        />
+
+        <TextView
+            android:id="@+id/tv_min"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:text="@{item.temperatureMin}"
+            android:textAlignment="textStart"
+            android:layout_marginStart="10dp"
+            app:layout_constraintHorizontal_weight="0.2"
+            app:layout_constraintStart_toEndOf="@id/tv_max"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_icon"
+            app:layout_constraintBottom_toBottomOf="@id/img_icon"
+            tools:text="23º"
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,47 @@
+apply plugin: 'jacoco'
+
+
+jacoco {
+    toolVersion = "$jacoco_version"
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+}
+
+def report = "${rootProject.buildDir}/result_report"
+
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest'/*, 'createDebugCoverageReport'*/]) {
+
+    group "Reporting"
+    description "Generate Jacoco coverage reports."
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+        html.destination file(report)
+        xml.destination file(report)
+        xml.destination file("${report}/report.xml")
+    }
+
+    def kotlinClasses = []
+    def kotlinSrc = []
+    def execution = []
+
+    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*',
+                      '**/*Test*.*', 'android/**/*.*', '**/di/*.*']
+
+    rootProject.subprojects.each { proj ->
+        kotlinClasses << fileTree(dir: "$proj.buildDir/tmp/kotlin-classes/debug", excludes: fileFilter)
+        kotlinSrc << "$proj.projectDir/src/main/java"
+        execution << fileTree(dir: proj.buildDir, includes: ['**/*.exec' , '**/*.ec'])
+    }
+
+    sourceDirectories.from = files(kotlinSrc)
+    classDirectories.from = files(kotlinClasses)
+    executionData.from = files(execution)
+
+    doLast() {
+        print "file://${report}/index.html"
+    }
+}
