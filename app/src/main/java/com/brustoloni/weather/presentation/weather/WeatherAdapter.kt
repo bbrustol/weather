@@ -61,7 +61,7 @@ class WeatherAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             TYPE_HOURLY -> {
                 HourlyViewHolder(inflate(
                     layoutInflater,
-                    R.layout.item_card_weather_hourly, parent, false
+                    R.layout.item_card_weather_recyclerview_pool, parent, false
                 ))
             }
 
@@ -107,7 +107,7 @@ class WeatherAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    inner class HourlyViewHolder(private val binding: com.brustoloni.weather.databinding.ItemCardWeatherHourlyBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class HourlyViewHolder(private val binding: com.brustoloni.weather.databinding.ItemCardWeatherRecyclerviewPoolBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(response: ArrayList<FormattedWeatherHourly>) {
             binding.rvWeatherHourly.adapter = WeatherHourlyAdapter(response)
             binding.rvWeatherHourly.layoutManager = LinearLayoutManager(binding.rvWeatherHourly.context, LinearLayout.HORIZONTAL, false)

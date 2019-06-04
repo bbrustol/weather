@@ -13,14 +13,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/card_margin">
+        android:layout_margin="@dimen/card_margin"
+        tools:background="@color/colorPrimary">
 
         <TextView
             android:id="@+id/tv_week_of_day"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@android:color/white"
             android:textSize="16sp"
             android:text="@{item.weekOfDay}"
             android:contentDescription="@string/app_name"
@@ -47,7 +48,7 @@
             android:id="@+id/tv_max"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@android:color/white"
             android:textSize="18sp"
             android:text="@{item.temperatureMax}"
             android:textAlignment="textEnd"
@@ -63,7 +64,7 @@
             android:id="@+id/tv_min"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@android:color/white"
             android:textSize="12sp"
             android:text="@{item.temperatureMin}"
             android:textAlignment="textStart"

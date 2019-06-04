@@ -15,14 +15,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/card_margin"
         android:layout_marginStart="@dimen/card_margin"
-        android:layout_marginEnd="@dimen/card_margin">
+        android:layout_marginEnd="@dimen/card_margin"
+        tools:background="@color/colorPrimary">
 
         <TextView
                 android:id="@+id/tv_key"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:text="@{item.hour}"
                 app:layout_constraintTop_toTopOf="parent"
@@ -49,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:text="@{item.temperature}"
                 android:layout_marginBottom="@dimen/card_margin"

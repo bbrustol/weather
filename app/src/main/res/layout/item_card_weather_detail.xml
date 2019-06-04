@@ -20,8 +20,8 @@
         android:foreground="?android:attr/selectableItemBackground">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/img_icon"
@@ -29,6 +29,8 @@
                 android:layout_height="@dimen/weather_header_image_size"
                 android:src="@{safeUnbox(item.icon), default =@drawable/empty}"
                 android:contentDescription="@string/app_name"
+                android:layout_marginTop="@dimen/card_margin"
+                android:layout_marginBottom="@dimen/card_margin"
                 android:tint="@color/colorPrimary"
                 app:layout_constraintBottom_toTopOf="@+id/tv_key"
                 app:layout_constraintEnd_toEndOf="parent"

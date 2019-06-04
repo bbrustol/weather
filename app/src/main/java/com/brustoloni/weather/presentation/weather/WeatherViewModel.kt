@@ -69,10 +69,9 @@ class WeatherViewModel(
         )
         //endregion
         //region -> DETAIL ITEMS
-        val image = application.baseContext.resources.getIdentifier("sad_cloud","drawable", application.packageName)
         formattedWeatherResponse.add(
             FormattedWeatherResponse(
-            icon = image,
+                icon = application.baseContext.resources.getIdentifier("thermometer","drawable", application.packageName),
             key = "Feels Like",
             value = response.currently?.apparentTemperature?.toInt().toString() + CELSIUS,
             type = ViewHolderTypeEmum.DETAIL.ordinal
@@ -81,7 +80,7 @@ class WeatherViewModel(
 
         formattedWeatherResponse.add(
             FormattedWeatherResponse(
-            icon = image,
+            icon = application.baseContext.resources.getIdentifier("humidity","drawable", application.packageName),
             key = "Humidity",
             value = response.currently?.humidity?.times(100)?.toInt().toString()+"%",
             type = ViewHolderTypeEmum.DETAIL.ordinal
@@ -92,7 +91,7 @@ class WeatherViewModel(
         val precipitation = response.currently?.precipIntensity
         formattedWeatherResponse.add(
             FormattedWeatherResponse(
-            icon = image,
+            icon = application.baseContext.resources.getIdentifier("drops","drawable", application.packageName),
             key = "Precipitation",
             value = "$precipitation cm",
             type = ViewHolderTypeEmum.DETAIL.ordinal
@@ -102,7 +101,7 @@ class WeatherViewModel(
         val pressure = response.currently?.pressure
         formattedWeatherResponse.add(
             FormattedWeatherResponse(
-            icon = image,
+            icon = application.baseContext.resources.getIdentifier("pressure","drawable", application.packageName),
             key = "Pressure",
             value = "$pressure hPa",
             type = ViewHolderTypeEmum.DETAIL.ordinal
@@ -111,7 +110,7 @@ class WeatherViewModel(
 
         formattedWeatherResponse.add(
             FormattedWeatherResponse(
-            icon = image,
+            icon = application.baseContext.resources.getIdentifier("uv_index","drawable", application.packageName),
             key = "UV Index",
             value = response.currently?.uvIndex.toString(),
             type = ViewHolderTypeEmum.DETAIL.ordinal
@@ -121,7 +120,7 @@ class WeatherViewModel(
         val visibility = response.currently?.visibility?.toInt()
         formattedWeatherResponse.add(
             FormattedWeatherResponse(
-            icon = image,
+                icon = application.baseContext.resources.getIdentifier("eye","drawable", application.packageName),
             key = "Visibility",
             value = "$visibility km",
             type = ViewHolderTypeEmum.DETAIL.ordinal
