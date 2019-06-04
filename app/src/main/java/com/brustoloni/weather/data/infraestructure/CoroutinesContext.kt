@@ -20,7 +20,7 @@ fun <T> callAsync(block: () -> Deferred<Response<T>>) = UI.async {
             Failure(Error(response.errorBody().toString()))
         }
     } catch (e: Exception) {
-        Failure(Error(e.message), UnexpectedError())
+        Failure(Error(e.message), UnexpectedError)
     }
 }
 

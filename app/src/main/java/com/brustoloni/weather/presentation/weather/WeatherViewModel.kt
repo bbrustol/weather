@@ -57,62 +57,76 @@ class WeatherViewModel(
         val formattedWeatherResponse: ArrayList<FormattedWeatherResponse> = arrayListOf()
 
         //region -> HEADER
-        formattedWeatherResponse.add(FormattedWeatherResponse(
+        formattedWeatherResponse.add(
+            FormattedWeatherResponse(
             icon = application.applicationContext.resources.getIdentifier(response.currently?.icon?.replace("-","_"),"drawable", application.packageName),
             temperature = response.currently?.temperature?.toInt().toString() + CELSIUS,
             summary = response.currently?.summary ?: "",
             timezone = response.timezone ?: "",
             time = timestampToString(response.currently?.time ?: 0, timezone = response.timezone ?: ""),
             type = ViewHolderTypeEmum.HEADER.ordinal
-        ))
+        )
+        )
         //endregion
         //region -> DETAIL ITEMS
         val image = application.baseContext.resources.getIdentifier("sad_cloud","drawable", application.packageName)
-        formattedWeatherResponse.add(FormattedWeatherResponse(
+        formattedWeatherResponse.add(
+            FormattedWeatherResponse(
             icon = image,
             key = "Feels Like",
             value = response.currently?.apparentTemperature?.toInt().toString() + CELSIUS,
             type = ViewHolderTypeEmum.DETAIL.ordinal
-        ))
+        )
+        )
 
-        formattedWeatherResponse.add(FormattedWeatherResponse(
+        formattedWeatherResponse.add(
+            FormattedWeatherResponse(
             icon = image,
             key = "Humidity",
             value = response.currently?.humidity?.times(100)?.toInt().toString()+"%",
             type = ViewHolderTypeEmum.DETAIL.ordinal
-        ))
+        )
+        )
 
 
         val precipitation = response.currently?.precipIntensity
-        formattedWeatherResponse.add(FormattedWeatherResponse(
+        formattedWeatherResponse.add(
+            FormattedWeatherResponse(
             icon = image,
             key = "Precipitation",
             value = "$precipitation cm",
             type = ViewHolderTypeEmum.DETAIL.ordinal
-        ))
+        )
+        )
 
         val pressure = response.currently?.pressure
-        formattedWeatherResponse.add(FormattedWeatherResponse(
+        formattedWeatherResponse.add(
+            FormattedWeatherResponse(
             icon = image,
             key = "Pressure",
             value = "$pressure hPa",
             type = ViewHolderTypeEmum.DETAIL.ordinal
-        ))
+        )
+        )
 
-        formattedWeatherResponse.add(FormattedWeatherResponse(
+        formattedWeatherResponse.add(
+            FormattedWeatherResponse(
             icon = image,
             key = "UV Index",
             value = response.currently?.uvIndex.toString(),
             type = ViewHolderTypeEmum.DETAIL.ordinal
-        ))
+        )
+        )
 
         val visibility = response.currently?.visibility?.toInt()
-        formattedWeatherResponse.add(FormattedWeatherResponse(
+        formattedWeatherResponse.add(
+            FormattedWeatherResponse(
             icon = image,
             key = "Visibility",
             value = "$visibility km",
             type = ViewHolderTypeEmum.DETAIL.ordinal
-        ))
+        )
+        )
         //endregion
         //region -> HOURLY
         val hourly: ArrayList<FormattedWeatherHourly> = arrayListOf()
@@ -127,16 +141,19 @@ class WeatherViewModel(
             }
         }
 
-        formattedWeatherResponse.add(FormattedWeatherResponse(
+        formattedWeatherResponse.add(
+            FormattedWeatherResponse(
             icon = 0,
             hourly = hourly,
             type = ViewHolderTypeEmum.HOURLY.ordinal
-        ))
+        )
+        )
         //endregion
         //region -> DAILY
         for (day in response.daily?.data!!) {
             if (day != null) {
-                formattedWeatherResponse.add(FormattedWeatherResponse(
+                formattedWeatherResponse.add(
+                    FormattedWeatherResponse(
                         weekOfDay = timestampToString(day.time?.toLong() ?: 0,"EEEE", response.timezone ?: ""),
                         icon = application.applicationContext.resources.getIdentifier(day.icon?.replace("-","_"),"drawable", application.packageName),
                         temperatureMin = day.temperatureMin?.toInt().toString() + CELSIUS,

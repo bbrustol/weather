@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -59,7 +60,8 @@ class WeatherFragment : Fragment() {
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && !flagPermission) {
             requestPermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION)
         }
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(context!!)
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
             callApi(location?.latitude ?: 0.0, location?.longitude ?: 0.0)
         }
@@ -69,6 +71,10 @@ class WeatherFragment : Fragment() {
         if (lat != 0.0 && lon != 0.0 && !viewModel.flagFirstLoad.value!!) {
             viewModel.flagFirstLoad.value = true
             viewModel.start("$lat,$lon")
+        } else if (!viewModel.flagFirstLoad.value!!) {
+            Log.e(WEATHER_FRAGMENT_TAG, "HARDCODE GELOCATION")
+            viewModel.flagFirstLoad.value = true
+            viewModel.start("59.337239,18.062381")
         }
     }
     override fun onRequestPermissionsResult(requestCode: Int,

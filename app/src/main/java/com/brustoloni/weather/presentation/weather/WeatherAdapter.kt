@@ -11,10 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.brustoloni.weather.R
 import com.brustoloni.weather.data.entity.weather.FormattedWeatherHourly
 import com.brustoloni.weather.data.entity.weather.response.FormattedWeatherResponse
-import com.brustoloni.weather.databinding.ItemCardWeatherDailyBinding
-import com.brustoloni.weather.databinding.ItemCardWeatherDetailBinding
-import com.brustoloni.weather.databinding.ItemCardWeatherHeaderBinding
-import com.brustoloni.weather.databinding.ItemCardWeatherHourlyBinding
 
 class WeatherAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -97,21 +93,21 @@ class WeatherAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     //region -> inner classes
-    inner class HeaderViewHolder(private val binding: ItemCardWeatherHeaderBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class HeaderViewHolder(private val binding: com.brustoloni.weather.databinding.ItemCardWeatherHeaderBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(response: FormattedWeatherResponse) = with(binding) {
             item = response
             executePendingBindings()
         }
     }
 
-    inner class DetailViewHolder(private val binding: ItemCardWeatherDetailBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class DetailViewHolder(private val binding: com.brustoloni.weather.databinding.ItemCardWeatherDetailBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(response: FormattedWeatherResponse) = with(binding) {
             item = response
             executePendingBindings()
         }
     }
 
-    inner class HourlyViewHolder(private val binding: ItemCardWeatherHourlyBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class HourlyViewHolder(private val binding: com.brustoloni.weather.databinding.ItemCardWeatherHourlyBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(response: ArrayList<FormattedWeatherHourly>) {
             binding.rvWeatherHourly.adapter = WeatherHourlyAdapter(response)
             binding.rvWeatherHourly.layoutManager = LinearLayoutManager(binding.rvWeatherHourly.context, LinearLayout.HORIZONTAL, false)
@@ -119,7 +115,7 @@ class WeatherAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    inner class DailyViewHolder(private val binding: ItemCardWeatherDailyBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class DailyViewHolder(private val binding: com.brustoloni.weather.databinding.ItemCardWeatherDailyBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(response: FormattedWeatherResponse) = with(binding) {
             item = response
             executePendingBindings()

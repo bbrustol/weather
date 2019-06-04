@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name=".presentation.WeatherApplication"
+        android:name="com.brustoloni.weather.presentation.WeatherApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".presentation.weather.WeatherActivity">
+        <activity android:name="com.brustoloni.weather.presentation.weather.WeatherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
