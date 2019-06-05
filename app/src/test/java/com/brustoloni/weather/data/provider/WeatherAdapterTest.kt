@@ -8,7 +8,7 @@ import org.junit.Before
 import org.junit.Test
 
 
-class PoiAdapterTest {
+class WeatherAdapterTest {
 
     private lateinit var moshi: Moshi
 
@@ -67,9 +67,9 @@ class PoiAdapterTest {
         val adapter =
             moshi.adapter(WeatherResponse::class.java)
 
-        val poiResponse = adapter.fromJson(json!!)
+        val response = adapter.fromJson(json!!)
 
-        poiResponse?.timezone?.isNotEmpty()?.let { assertTrue(it) }
+        response?.timezone?.isNotEmpty()?.let { assertTrue(it) }
     }
 
 }
