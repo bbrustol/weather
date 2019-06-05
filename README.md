@@ -1,18 +1,18 @@
 # weather
-• Koin
-• MVVM
-• Retrofit
-• AndroidX
-• DataBinding
-• Kotlin
-• Jacoco
-• Glide
-• Recyclerview with mutiple ViewHolder
-• RecyclerviewPool (NestedRecyclerview)
-• Local Geolocation
-
-Tests
-• MockK
-• Expresso
-• Orchestrator
-• Mockwebserver
+• Koin<br>
+• MVVM<br>
+• Retrofit<br>
+• AndroidX<br>
+• DataBinding<br>
+• Kotlin<br>
+• Jacoco<br>
+• Glide<br>
+• Recyclerview with mutiple ViewHolder<br>
+• RecyclerviewPool (NestedRecyclerview)<br>
+• Local Geolocation<br>
+<br><br>
+# Tests
+• MockK<br>
+• Expresso<br>
+• Orchestrator<br>
+• Mockwebserver<br>
