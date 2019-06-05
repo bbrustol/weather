@@ -11,7 +11,6 @@ data class WeatherResponse(
     val latitude: Double?,
     val longitude: Double?,
     val offset: Int?,
-    val timeSummary: String?,
     val timezone: String?
 )
 

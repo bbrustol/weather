@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import com.brustoloni.weather.utils.Constants
 import com.brustoloni.weather.utils.Constants.Companion.MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -72,9 +73,9 @@ class WeatherFragment : Fragment() {
             viewModel.flagFirstLoad.value = true
             viewModel.start("$lat,$lon")
         } else if (!viewModel.flagFirstLoad.value!!) {
-            Log.e(WEATHER_FRAGMENT_TAG, "HARDCODE GELOCATION")
+            Log.e(WEATHER_FRAGMENT_TAG, "HARDCODE GEOLOCATION")
             viewModel.flagFirstLoad.value = true
-            viewModel.start("59.337239,18.062381")
+            viewModel.start(Constants.FAKE_LOCATION)
         }
     }
     override fun onRequestPermissionsResult(requestCode: Int,

@@ -59,7 +59,7 @@ class WeatherViewModel(
         //region -> HEADER
         formattedWeatherResponse.add(
             FormattedWeatherResponse(
-            icon = application.applicationContext.resources.getIdentifier(response.currently?.icon?.replace("-","_"),"drawable", application.packageName),
+            icon = application.applicationContext.resources.getIdentifier(response.currently?.icon,"drawable", application.packageName),
             temperature = response.currently?.temperature?.toInt().toString() + CELSIUS,
             summary = response.currently?.summary ?: "",
             timezone = response.timezone ?: "",
@@ -71,7 +71,7 @@ class WeatherViewModel(
         //region -> DETAIL ITEMS
         formattedWeatherResponse.add(
             FormattedWeatherResponse(
-                icon = application.baseContext.resources.getIdentifier("thermometer","drawable", application.packageName),
+            icon = application.applicationContext.resources.getIdentifier("thermometer","drawable", application.packageName),
             key = "Feels Like",
             value = response.currently?.apparentTemperature?.toInt().toString() + CELSIUS,
             type = ViewHolderTypeEmum.DETAIL.ordinal
@@ -80,7 +80,7 @@ class WeatherViewModel(
 
         formattedWeatherResponse.add(
             FormattedWeatherResponse(
-            icon = application.baseContext.resources.getIdentifier("humidity","drawable", application.packageName),
+            icon = application.applicationContext.resources.getIdentifier("humidity","drawable", application.packageName),
             key = "Humidity",
             value = response.currently?.humidity?.times(100)?.toInt().toString()+"%",
             type = ViewHolderTypeEmum.DETAIL.ordinal
@@ -91,7 +91,7 @@ class WeatherViewModel(
         val precipitation = response.currently?.precipIntensity
         formattedWeatherResponse.add(
             FormattedWeatherResponse(
-            icon = application.baseContext.resources.getIdentifier("drops","drawable", application.packageName),
+            icon = application.applicationContext.resources.getIdentifier("drops","drawable", application.packageName),
             key = "Precipitation",
             value = "$precipitation cm",
             type = ViewHolderTypeEmum.DETAIL.ordinal
@@ -101,7 +101,7 @@ class WeatherViewModel(
         val pressure = response.currently?.pressure
         formattedWeatherResponse.add(
             FormattedWeatherResponse(
-            icon = application.baseContext.resources.getIdentifier("pressure","drawable", application.packageName),
+            icon = application.applicationContext.resources.getIdentifier("pressure","drawable", application.packageName),
             key = "Pressure",
             value = "$pressure hPa",
             type = ViewHolderTypeEmum.DETAIL.ordinal
@@ -110,7 +110,7 @@ class WeatherViewModel(
 
         formattedWeatherResponse.add(
             FormattedWeatherResponse(
-            icon = application.baseContext.resources.getIdentifier("uv_index","drawable", application.packageName),
+            icon = application.applicationContext.resources.getIdentifier("uv_index","drawable", application.packageName),
             key = "UV Index",
             value = response.currently?.uvIndex.toString(),
             type = ViewHolderTypeEmum.DETAIL.ordinal
@@ -120,7 +120,7 @@ class WeatherViewModel(
         val visibility = response.currently?.visibility?.toInt()
         formattedWeatherResponse.add(
             FormattedWeatherResponse(
-                icon = application.baseContext.resources.getIdentifier("eye","drawable", application.packageName),
+                icon = application.applicationContext.resources.getIdentifier("eye","drawable", application.packageName),
             key = "Visibility",
             value = "$visibility km",
             type = ViewHolderTypeEmum.DETAIL.ordinal

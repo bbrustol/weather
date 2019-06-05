@@ -21,5 +21,5 @@ fun timestampToString(dates: Long, dateFormat: String = "EEE, MMM dd yyyy - HH:m
 
     cal.timeZone = if (timezone.isEmpty()) { TimeZone.getDefault() } else { TimeZone.getTimeZone(timezone) }
 
-    return DateFormat.format(dateFormat, cal).toString()
+    return if(!DateFormat.format(dateFormat, cal).isNullOrEmpty()) { DateFormat.format(dateFormat, cal).toString() } else { "" }
 }
